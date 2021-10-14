@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  ChatViewController.swift
 //  ChatApp
 //
-//  Created by Mihailo Jovanovic on 7.10.21..
+//  Created by Mihailo Jovanovic on 13.10.21..
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
-
 }
-
