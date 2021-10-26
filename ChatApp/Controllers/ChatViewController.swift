@@ -47,6 +47,7 @@ class ChatViewController: UIViewController {
                 print("ULAZAK")
                 if let messageSender = queryDoc.data()["sender"] as? String,let messageBody = queryDoc.data()["text"] as? String,let time = queryDoc.data()["time"] as? String {
                     let addMessage = Message(email: messageSender, text: messageBody, time:time)
+                    print("SENDER \(messageSender)")
                     self.messages.append(addMessage)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -92,7 +93,7 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("prvi tableview")
+        print("prvi tableview")
 //        print(messages.count)
         return messages.count
     }
@@ -100,20 +101,25 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Upad")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
-        cell.separatorInset = UIEdgeInsets.zero
-        //if let user = Auth.auth().currentUser?.email
-        if Auth.auth().currentUser?.email == messages[indexPath.row].sender{
-            print(messages[indexPath.row].sender)
+        //cell.separatorInset = UIEdgeInsets.zero
+        if let user = Auth.auth().currentUser?.email{
+        if user == messages[indexPath.row].sender {
+            print("\(user) je :\(messages[indexPath.row].sender)")
             cell.bodyLabelCell.text = messages[indexPath.row].body
             cell.leftLabelCell.text = messages[indexPath.row].time
             cell.leftImageCell.isHidden = true
             cell.rightLabelCell.isHidden = true
+            cell.rightImageCell.isHidden = false
+            cell.leftLabelCell.isHidden = false
         }else{
             print(messages[indexPath.row].sender)
             cell.bodyLabelCell.text = messages[indexPath.row].body
             cell.rightLabelCell.text = messages[indexPath.row].time
             cell.rightImageCell.isHidden = true
             cell.leftLabelCell.isHidden = true
+            cell.leftImageCell.isHidden = false
+            cell.rightLabelCell.isHidden = false
+        }
         }
         return cell
         
