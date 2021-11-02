@@ -35,6 +35,7 @@
 		049331F4270F88FF004EA163 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		049331F7270F88FF004EA163 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		049331F9270F88FF004EA163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04B8B26827315478008F4394 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		04E3993D271D79EC006ED4F0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		04E39940271DE080006ED4F0 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		04E39941271DE080006ED4F0 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		049331DF270F88FE004EA163 = {
 			isa = PBXGroup;
 			children = (
+				04B8B26827315478008F4394 /* README.md */,
 				049331EA270F88FE004EA163 /* ChatApp */,
 				049331E9270F88FE004EA163 /* Products */,
 				498050636FDB5F93335C7778 /* Frameworks */,

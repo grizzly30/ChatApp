@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class ChatViewController: UIViewController {
     
@@ -44,10 +45,8 @@ class ChatViewController: UIViewController {
               return
             }
             for queryDoc in data{
-                print("ULAZAK")
                 if let messageSender = queryDoc.data()["sender"] as? String,let messageBody = queryDoc.data()["text"] as? String,let time = queryDoc.data()["time"] as? String {
                     let addMessage = Message(email: messageSender, text: messageBody, time:time)
-                    print("SENDER \(messageSender)")
                     self.messages.append(addMessage)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -93,18 +92,14 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("prvi tableview")
-//        print(messages.count)
         return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Upad")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         //cell.separatorInset = UIEdgeInsets.zero
         if let user = Auth.auth().currentUser?.email{
         if user == messages[indexPath.row].sender {
-            print("\(user) je :\(messages[indexPath.row].sender)")
             cell.bodyLabelCell.text = messages[indexPath.row].body
             cell.leftLabelCell.text = messages[indexPath.row].time
             cell.leftImageCell.isHidden = true
@@ -112,7 +107,6 @@ extension ChatViewController: UITableViewDataSource {
             cell.rightImageCell.isHidden = false
             cell.leftLabelCell.isHidden = false
         }else{
-            print(messages[indexPath.row].sender)
             cell.bodyLabelCell.text = messages[indexPath.row].body
             cell.rightLabelCell.text = messages[indexPath.row].time
             cell.rightImageCell.isHidden = true

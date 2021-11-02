@@ -7,7 +7,7 @@ target 'ChatApp' do
 
   # Pods for ChatApp
   pod 'Firebase/Auth', '~> 8.1.0'
-  pod 'Firebase/Firestore'
+  pod 'Firebase/Firestore','~> 8.1.0'
   
   post_install do |installer|
    installer.pods_project.targets.each do |target|
